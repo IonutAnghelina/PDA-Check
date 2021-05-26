@@ -84,19 +84,17 @@ class PDA:
         self.startSymbol = startSymbol
         self.transitions = transitions
 
-
-    def checkEnd(self,currentState,word,currentStack):
-        if word!="":
+    def checkEnd(self, currentState, word, currentStack):
+        if word != "":
             return 0
 
-        if self.checkType[0]==1 and currentState not in self.finalStates:
+        if self.checkType[0] == 1 and currentState not in self.finalStates:
             return 0
 
-        if self.checkType[1]==1 and currentStack!=self.startSymbol:
+        if self.checkType[1] == 1 and currentStack != self.startSymbol:
             return 0
 
         return 1
-
 
     def check(self, word):
         # We will keep a deque of tuples of (state,word,stack)
@@ -113,7 +111,7 @@ class PDA:
         while len(q):
             currentState, word, currentStack = q[0]
             self.checkEnd(*q[0])
-            flag=self.checkEnd(*q[0])
+            flag = self.checkEnd(*q[0])
             if flag:
                 break
 
